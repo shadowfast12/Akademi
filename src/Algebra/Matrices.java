@@ -44,13 +44,13 @@ public class Matrices {
                 x_count++;
             }
         }
-        total=new double[count][x_count];
+        total=new double[x_count][count];
 
         for(int x=0;x<subpart.length();x++){
 
             if(subpart.charAt(x)=='|'){
-                x_count++;
-                subpart=subpart.replaceFirst("l", ",");
+                x_rep++;
+                subpart=subpart.replaceFirst("|", ",");
             }
             if(subpart.charAt(x)==','){
                 if(x!=0){
@@ -78,7 +78,7 @@ public class Matrices {
             for(int i=0;i<a.length;i++){
                 for(int o=0;o<b[0].length;o++){
                     for(int x=0;x<a[0].length;x++){
-                        num[i][o]+=a[i][x]*b[x][o];
+                        num[i][o]=a[i][x]*b[x][o];
                     }
                 }
             }
@@ -91,12 +91,14 @@ public class Matrices {
 
     //if no alterations to the numbers, set the a_altr or b_altr to 1 not 0
     //if there's a negative symbol apply it to the alteration
-    public static double[] Matrix(double[][] a, double[][] b){
+    public static double[][] Matrix(double[][] a, double[][] b){
         double[][] sum= new double[a[0].length][a.length];
 
         for(int i=0;i<a.length;i++){
-            for(){
-                sum[i]=a[i]+b[i];
+            for(int o=0;o<b[0].length;o++){
+                for(int x=0;x<a[0].length;x++){
+                    sum[i][o]=a[i][x]+b[x][o];
+                }
             }
         }
 
